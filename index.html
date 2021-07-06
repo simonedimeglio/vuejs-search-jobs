@@ -7,9 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VueJs Search Jobs Platform</title>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com"> 
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -18,36 +18,41 @@
 
     <div id="app">
 
+        <header>
+            <h1>Booled <i class="fab fa-linkedin"></i></h1>
+        </header>
+
         <div class="container">
 
             <!-- FIRST LIST (ALL JOBS) -->
             <div class="all-jobs">
                 <div class="list-title">
-                    <h1>JOBS LIST</h1>
+                    <h1><i class="fas fa-globe-americas"></i> All Jobs</h1>
                 </div>
                 <div v-for="job in jobs" class="job-row">
                     <div class="job-title">
                         <h3>
+                            <img :src="job.logo" class="job-logo" alt="logo">
                             {{job.position}}
                             <span v-if="starred.includes(job.id)" @click="setFavorites(job.id)">
-                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star on"></i>
                             </span>
                             <span v-else @click="setFavorites(job.id)">
-                                <i class="far fa-star"></i>
+                                <i class="far fa-star off"></i>
                             </span>
                         </h3>
                         <h5>{{job.company}}</h5>
-                        <h5>{{job.city}} - {{job.contract}}</h5>
+                        <h5>{{job.city}} / {{job.contract}}</h5>
                     </div>
                     <div class="job-description">
                         <p>{{job.description}}</p>
                     </div>
                     <div class="apply-button">
                         <div v-if="applied.includes(job.id)" @click="sendApplication(job.id)">
-                            <i class="fas fa-share-square">Applied</i>
+                            <i class="fas fa-share-square send">Applied</i>
                         </div>
                         <div v-else @click="sendApplication(job.id)">
-                            <i class="far fa-share-square">Apply</i>
+                            <i class="far fa-share-square no-send">Apply</i>
                         </div>
                     </div>
                 </div>
@@ -59,34 +64,36 @@
             </div>
 
 
-            <!-- STARRED LIST
+            <!-- STARRED LIST -->
             <div class="favorites">
                 <div class="list-title">
-                    <h1>FAVORITES</h1>
+                    <h1><i class="far fa-bookmark"></i> Favorites</h1>
                 </div>
                 <div v-for="job in jobs" v-if="starred.includes(job.id)" class="job-row">
                     <div class="job-title">
+                        
                         <h3>
+                            <img :src="job.logo" class="job-logo" alt="logo">
                             {{job.position}}
                             <span v-if="starred.includes(job.id)" @click="setFavorites(job.id)">
-                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star on"></i>
                             </span>
                             <span v-else @click="setFavorites(job.id)">
-                                <i class="far fa-star"></i>
+                                <i class="far fa-star off"></i>
                             </span>
                         </h3>
                         <h5>{{job.company}}</h5>
-                        <h5>{{job.city}} - {{job.contract}}</h5>
+                        <h5>{{job.city}} / {{job.contract}}</h5>
                     </div>
                     <div class="job-description">
                         <p>{{job.description}}</p>
                     </div>
                     <div class="apply-button">
                         <div v-if="applied.includes(job.id)" @click="sendApplication(job.id)">
-                            <i class="fas fa-share-square">Applied</i>
+                            <i class="fas fa-share-square send">Applied</i>
                         </div>
                         <div v-else @click="sendApplication(job.id)">
-                            <i class="far fa-share-square">Apply</i>
+                            <i class="far fa-share-square no-send">Apply</i>
                         </div>
                     </div>
                 </div>
@@ -94,37 +101,39 @@
             </div>
 
 
+            <!-- APPLIED LIST -->
             <div class="applied">
                 <div class="list-title">
-                    <h1>APPLIED</h1>
+                    <h1><i class="far fa-hand-point-down"></i> Applied</h1>
                 </div>
                 <div v-for="job in jobs" v-if="applied.includes(job.id)" class="job-row">
                     <div class="job-title">
                         <h3>
+                            <img :src="job.logo" class="job-logo" alt="logo">
                             {{job.position}}
                             <span v-if="starred.includes(job.id)" @click="setFavorites(job.id)">
-                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star on"></i>
                             </span>
                             <span v-else @click="setFavorites(job.id)">
-                                <i class="far fa-star"></i>
+                                <i class="far fa-star off"></i>
                             </span>
                         </h3>
                         <h5>{{job.company}}</h5>
-                        <h5>{{job.city}} - {{job.contract}}</h5>
+                        <h5>{{job.city}} / {{job.contract}}</h5>
                     </div>
                     <div class="job-description">
                         <p>{{job.description}}</p>
                     </div>
                     <div class="apply-button">
                         <div v-if="applied.includes(job.id)" @click="sendApplication(job.id)">
-                            <i class="fas fa-share-square">Applied</i>
+                            <i class="fas fa-share-square send">Applied</i>
                         </div>
                         <div v-else @click="sendApplication(job.id)">
-                            <i class="far fa-share-square">Apply</i>
+                            <i class="far fa-share-square no-send">Apply</i>
                         </div>
                     </div>
                 </div>
-            </div> -->
+            </div> 
             
         </div>
 
