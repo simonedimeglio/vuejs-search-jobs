@@ -1,24 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>VueJs Search Jobs Platform</title>
-        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-        <link rel="preconnect" href="https://fonts.googleapis.com"> 
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap" rel="stylesheet">
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="css/style.css">
-    </head>
-    <body>
 
-        <div id="app">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VueJs Search Jobs Platform</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
 
-            <div class="container">
+<body>
 
-                <!-- MILESTONE 1 -->
+    <div id="app">
+
+        <div class="container">
+
+            <!-- FIRST LIST (ALL JOBS) -->
+            <div class="all-jobs">
+                <div class="list-title">
+                    <h1>JOBS LIST</h1>
+                </div>
                 <div v-for="(job, index) in jobs" class="job-row">
                     <div class="job-title">
                         <h3>
@@ -47,12 +53,82 @@
                 </div>
 
                 <div class="application-notification" v-if="notification === 'on'">
-                    <h1> Candidatura correttamente effettuata!</h1>
+                    <h1>Application successfully sent</h1>
                     <h2><i class="fas fa-thumbs-up"></i></h2>
                 </div>
             </div>
 
+
+            <!-- STARRED LIST -->
+            <div class="favorites">
+                <div class="list-title">
+                    <h1>FAVORITES</h1>
+                </div>
+                <div v-for="(job, index) in jobs" v-if="starred.includes(index + 1)" class="job-row">
+                    <div class="job-title">
+                        <h3>
+                            {{job.position}}
+                            <span v-if="starred.includes(index + 1)" @click="setFavorites(index)">
+                                <i class="fas fa-star"></i>
+                            </span>
+                            <span v-else @click="setFavorites(index)">
+                                <i class="far fa-star"></i>
+                            </span>
+                        </h3>
+                        <h5>{{job.company}}</h5>
+                        <h5>{{job.city}} - {{job.contract}}</h5>
+                    </div>
+                    <div class="job-description">
+                        <p>{{job.description}}</p>
+                    </div>
+                    <div class="apply-button">
+                        <div v-if="applied.includes(index +1)" @click="sendApplication(index)">
+                            <i class="fas fa-share-square">Applied</i>
+                        </div>
+                        <div v-else @click="sendApplication(index)">
+                            <i class="far fa-share-square">Apply</i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- APPLIED -->
+            <div class="applied">
+                <div class="list-title">
+                    <h1>APPLIED</h1>
+                </div>
+                <div v-for="(job, index) in jobs" v-if="applied.includes(index + 1)" class="job-row">
+                    <div class="job-title">
+                        <h3>
+                            {{job.position}}
+                            <span v-if="starred.includes(index + 1)" @click="setFavorites(index)">
+                                <i class="fas fa-star"></i>
+                            </span>
+                            <span v-else @click="setFavorites(index)">
+                                <i class="far fa-star"></i>
+                            </span>
+                        </h3>
+                        <h5>{{job.company}}</h5>
+                        <h5>{{job.city}} - {{job.contract}}</h5>
+                    </div>
+                    <div class="job-description">
+                        <p>{{job.description}}</p>
+                    </div>
+                    <div class="apply-button">
+                        <div v-if="applied.includes(index +1)" @click="sendApplication(index)">
+                            <i class="fas fa-share-square">Applied</i>
+                        </div>
+                        <div v-else @click="sendApplication(index)">
+                            <i class="far fa-share-square">Apply</i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
         </div>
-        <script src="js/script.js"></script>
-    </body>
+
+    </div>
+    <script src="js/script.js"></script>
+</body>
+
 </html>

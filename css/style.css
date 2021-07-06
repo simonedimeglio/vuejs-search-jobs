@@ -13,8 +13,12 @@ i {
 }
 
 .container {
-    width: 600px;
     margin: 0 auto;
+    width: 60%;
+}
+
+.list-title {
+    text-align: center;
 }
 
 .job-row {
