@@ -1,0 +1,24 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+i {
+    cursor: pointer;
+}
+
+.container {
+    width: 600px;
+    margin: 0 auto;
+}
+
+.job-row {
+    border: 1px solid gray;
+    margin: 15px 0;
+    padding: 10px;
+}
