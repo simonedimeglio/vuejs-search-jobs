@@ -6,6 +6,8 @@
 
 body {
     font-family: 'Roboto', sans-serif;
+    background-color: #f2f2ef
+    ;
 }
 
 i {
@@ -22,9 +24,10 @@ i {
 }
 
 .job-row {
-    border: 1px solid gray;
+    border-radius: 6px;
     margin: 15px 0;
     padding: 10px;
+    background-color: white;
 }
 
 

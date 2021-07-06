@@ -68,7 +68,7 @@ new Vue(
             ],
             starred: [1, 2, 3],
             applied: [4, 5],
-            notification: 'off'
+            notification: 'off',
 
         },
 
@@ -82,15 +82,15 @@ new Vue(
             */
 
             setFavorites: function (index) {
-                if (this.starred.includes(index + 1)) { // se è già incluso in "starred"
-                    this.starred.splice(index, 1); // lo tolgo dall'array
-                    console.log('Delete from favorites Job n° ' + (index + 1));
-                    console.log(this.starred);
+                if (this.starred.includes(index)) { // se l'id del job selezionato è già presente nell'array starred
+                    let counter = this.starred.indexOf(index); // passo allo splice l'indice di ciò che seleziono
+                    this.starred.splice(counter, 1); // tolgo l'id dalla lista starred
                 } else { // altrimenti
-                    this.starred.push(index + 1); // lo pusho nell'array
-                    console.log('Add to favorites Job n° ' + (index + 1));
-                    console.log(this.starred);
+                    this.starred.push(index); // lo pusho nell'array
                 }
+                console.log(this.starred);
+
+
             },
 
             /*
@@ -102,11 +102,17 @@ new Vue(
 
             sendApplication: function (index) {
 
-                if (!this.applied.includes(index + 1)) {// se non mi sono già candidato per questa posizione lavorativa
-                    this.applied.push(index + 1); // la pusho nell'array "applied"
-                    if (this.starred.includes(index + 1)) { // se è tra i preferiti
-                        this.starred.splice(index, 1); // la elimino di conseguenza dalla lista "starred"
-                    }
+                if (!this.applied.includes(index)) {// se non mi sono già candidato per questa posizione lavorativa
+                    this.applied.push(index); // la pusho nell'array "applied"
+
+                    this.starred = this.starred.filter((e) => {
+                        if (e === index) {
+                            return false
+                        } else {
+                            return true
+                        }
+                    });
+
                     // BONUS
                     // Quando premiamo sul pulsante APPLY, 
                     // dopo 1 secondo viene mostrata una modale con Feedback ‘Candidatura inviata’ 

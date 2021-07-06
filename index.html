@@ -25,14 +25,14 @@
                 <div class="list-title">
                     <h1>JOBS LIST</h1>
                 </div>
-                <div v-for="(job, index) in jobs" class="job-row">
+                <div v-for="job in jobs" class="job-row">
                     <div class="job-title">
                         <h3>
                             {{job.position}}
-                            <span v-if="starred.includes(index + 1)" @click="setFavorites(index)">
+                            <span v-if="starred.includes(job.id)" @click="setFavorites(job.id)">
                                 <i class="fas fa-star"></i>
                             </span>
-                            <span v-else @click="setFavorites(index)">
+                            <span v-else @click="setFavorites(job.id)">
                                 <i class="far fa-star"></i>
                             </span>
                         </h3>
@@ -43,10 +43,10 @@
                         <p>{{job.description}}</p>
                     </div>
                     <div class="apply-button">
-                        <div v-if="applied.includes(index +1)" @click="sendApplication(index)">
+                        <div v-if="applied.includes(job.id)" @click="sendApplication(job.id)">
                             <i class="fas fa-share-square">Applied</i>
                         </div>
-                        <div v-else @click="sendApplication(index)">
+                        <div v-else @click="sendApplication(job.id)">
                             <i class="far fa-share-square">Apply</i>
                         </div>
                     </div>
@@ -59,19 +59,19 @@
             </div>
 
 
-            <!-- STARRED LIST -->
+            <!-- STARRED LIST
             <div class="favorites">
                 <div class="list-title">
                     <h1>FAVORITES</h1>
                 </div>
-                <div v-for="(job, index) in jobs" v-if="starred.includes(index + 1)" class="job-row">
+                <div v-for="job in jobs" v-if="starred.includes(job.id)" class="job-row">
                     <div class="job-title">
                         <h3>
                             {{job.position}}
-                            <span v-if="starred.includes(index + 1)" @click="setFavorites(index)">
+                            <span v-if="starred.includes(job.id)" @click="setFavorites(job.id)">
                                 <i class="fas fa-star"></i>
                             </span>
-                            <span v-else @click="setFavorites(index)">
+                            <span v-else @click="setFavorites(job.id)">
                                 <i class="far fa-star"></i>
                             </span>
                         </h3>
@@ -82,10 +82,10 @@
                         <p>{{job.description}}</p>
                     </div>
                     <div class="apply-button">
-                        <div v-if="applied.includes(index +1)" @click="sendApplication(index)">
+                        <div v-if="applied.includes(job.id)" @click="sendApplication(job.id)">
                             <i class="fas fa-share-square">Applied</i>
                         </div>
-                        <div v-else @click="sendApplication(index)">
+                        <div v-else @click="sendApplication(job.id)">
                             <i class="far fa-share-square">Apply</i>
                         </div>
                     </div>
@@ -93,19 +93,19 @@
     
             </div>
 
-            <!-- APPLIED -->
+
             <div class="applied">
                 <div class="list-title">
                     <h1>APPLIED</h1>
                 </div>
-                <div v-for="(job, index) in jobs" v-if="applied.includes(index + 1)" class="job-row">
+                <div v-for="job in jobs" v-if="applied.includes(job.id)" class="job-row">
                     <div class="job-title">
                         <h3>
                             {{job.position}}
-                            <span v-if="starred.includes(index + 1)" @click="setFavorites(index)">
+                            <span v-if="starred.includes(job.id)" @click="setFavorites(job.id)">
                                 <i class="fas fa-star"></i>
                             </span>
-                            <span v-else @click="setFavorites(index)">
+                            <span v-else @click="setFavorites(job.id)">
                                 <i class="far fa-star"></i>
                             </span>
                         </h3>
@@ -116,15 +116,15 @@
                         <p>{{job.description}}</p>
                     </div>
                     <div class="apply-button">
-                        <div v-if="applied.includes(index +1)" @click="sendApplication(index)">
+                        <div v-if="applied.includes(job.id)" @click="sendApplication(job.id)">
                             <i class="fas fa-share-square">Applied</i>
                         </div>
-                        <div v-else @click="sendApplication(index)">
+                        <div v-else @click="sendApplication(job.id)">
                             <i class="far fa-share-square">Apply</i>
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
             
         </div>
 
