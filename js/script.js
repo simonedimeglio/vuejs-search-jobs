@@ -66,9 +66,29 @@ new Vue(
                     contract: 'Full Time'
                 }    
             ],
-            starred: [2, 3],
+            starred: [1, 2, 3],
             applied: [4, 5]
             
         },
+
+        methods: {
+
+            /*
+            IDENTIFICARE IL PREFERITO
+            Identifichiamo nella lista gli annunci di lavoro preferiti, 
+            con un simbolo che si attiva/colora 
+            solo se quell’annuncio è tra i preferiti.
+            */
+
+            setFavorites: function (item) {
+                if (this.starred.includes(item + 1)) {
+                    this.starred.splice(item, 1);
+                } else {
+                    this.starred.push(item + 1); 
+                }
+            },
+        }
+
+
     }
 );

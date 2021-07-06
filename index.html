@@ -19,12 +19,12 @@
             <div class="container">
 
                 <!-- MILESTONE 1 -->
-                <div v-for="job in jobs" class="job-row">
+                <div v-for="(job, index) in jobs" class="job-row">
                     <div class="job-title">
                         <h3>
                             {{job.position}}
-                            <span v-if="starred.includes(job.id)"><i class="fas fa-star"></i></span>
-                            <span v-else><i class="far fa-star"></i></span>
+                            <span v-if="starred.includes(index + 1)" @click="setFavorites(index)"><i class="fas fa-star"></i></span>
+                            <span v-else @click="setFavorites(index)"><i class="far fa-star"></i></span>
                         </h3>
                         <h5>{{job.company}}</h5>
                         <h5>{{job.city}} - {{job.contract}}</h5>
