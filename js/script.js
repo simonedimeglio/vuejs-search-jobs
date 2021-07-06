@@ -66,8 +66,9 @@ new Vue(
                     contract: 'Full Time'
                 }    
             ],
-            starred: [1, 2, 3],
-            applied: [4, 5]
+            starred: [1,2,3],
+            applied: [4,5],
+            notification: 'off'
             
         },
 
@@ -80,32 +81,42 @@ new Vue(
             solo se quell’annuncio è tra i preferiti.
             */
 
-            setFavorites: function (item) {
-                if (this.starred.includes(item + 1)) {
-                    this.starred.splice(item, 1);
-                    console.log('Delete from favorites');
-                } else {
-                    this.starred.push(item + 1); 
-                    console.log('Add to favorites');
+            setFavorites: function (index) {
+                if (this.starred.includes(index + 1)) { // se è già incluso in "starred"
+                    this.starred.splice(index, 1); // lo tolgo dall'array
+                    console.log('Delete from favorites Job n° ' + (index + 1));
+                    console.log(this.starred);
+                } else { // altrimenti
+                    this.starred.push(index + 1); // lo pusho nell'array
+                    console.log('Add to favorites Job n° ' + (index + 1));
+                    console.log(this.starred);
                 }
             },
 
-            sendApplication: function (item) {
-                if (!this.applied.includes(item + 1) && this.starred.includes(item + 1)) {
-                    this.applied.push(item + 1);
-                    this.starred.splice(item, 1); 
-                    console.log('Application sended and automatically deleted from favorites');
-                } else {
-                    this.applied.push(item + 1);
-                    console.log('Application sended');
-                }
-            },
             /*
             MILESTONE 3: INVIARE LA NOSTRA CANDIDATURA
             Gli annunci a cui abbiamo mandato una candidatura non mostreranno il pulsante APPLY e si distingueranno dalle altre per colore e Badge ‘applied’.
             Un annuncio a cui abbiamo inviato la candidatura automaticamente viene eliminato dalla lista starred.
             Anche in questo caso inseriremo l’id nell’array applied. (come prima abbiamo fatto per lo starred)
             */
+
+            sendApplication: function (index) {
+    
+                this.applied.push(index + 1); //pusho nell'array "applied"
+                if (this.applied.includes(index + 1)) {
+                    this.starred.splice(index, 1); //elimino dall'array "starred"
+                }
+                console.log('Application sended for Job n° ' + (index + 1));
+                console.log(this.starred);
+            
+                // BONUS
+                // Quando premiamo sul pulsante APPLY, 
+                // dopo 1 secondo viene mostrata una modale con Feedback ‘Candidatura inviata’ 
+                // che sparirà dopo un altro secondo
+                setTimeout(() => {this.notification = 'on';}, 1000);
+                setTimeout(() => {this.notification = 'off';}, 2000);
+            
+        },
         }
 
 
