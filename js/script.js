@@ -74,7 +74,7 @@ new Vue(
         methods: {
 
             /*
-            IDENTIFICARE IL PREFERITO
+            MILESTONE 2: IDENTIFICARE IL PREFERITO
             Identifichiamo nella lista gli annunci di lavoro preferiti, 
             con un simbolo che si attiva/colora 
             solo se quell’annuncio è tra i preferiti.
@@ -83,10 +83,29 @@ new Vue(
             setFavorites: function (item) {
                 if (this.starred.includes(item + 1)) {
                     this.starred.splice(item, 1);
+                    console.log('Delete from favorites');
                 } else {
                     this.starred.push(item + 1); 
+                    console.log('Add to favorites');
                 }
             },
+
+            sendApplication: function (item) {
+                if (!this.applied.includes(item + 1) && this.starred.includes(item + 1)) {
+                    this.applied.push(item + 1);
+                    this.starred.splice(item, 1); 
+                    console.log('Application sended and automatically deleted from favorites');
+                } else {
+                    this.applied.push(item + 1);
+                    console.log('Application sended');
+                }
+            },
+            /*
+            MILESTONE 3: INVIARE LA NOSTRA CANDIDATURA
+            Gli annunci a cui abbiamo mandato una candidatura non mostreranno il pulsante APPLY e si distingueranno dalle altre per colore e Badge ‘applied’.
+            Un annuncio a cui abbiamo inviato la candidatura automaticamente viene eliminato dalla lista starred.
+            Anche in questo caso inseriremo l’id nell’array applied. (come prima abbiamo fatto per lo starred)
+            */
         }
 
 

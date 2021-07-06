@@ -23,14 +23,26 @@
                     <div class="job-title">
                         <h3>
                             {{job.position}}
-                            <span v-if="starred.includes(index + 1)" @click="setFavorites(index)"><i class="fas fa-star"></i></span>
-                            <span v-else @click="setFavorites(index)"><i class="far fa-star"></i></span>
+                            <span v-if="starred.includes(index + 1)" @click="setFavorites(index)">
+                                <i class="fas fa-star"></i>
+                            </span>
+                            <span v-else @click="setFavorites(index)">
+                                <i class="far fa-star"></i>
+                            </span>
                         </h3>
                         <h5>{{job.company}}</h5>
                         <h5>{{job.city}} - {{job.contract}}</h5>
                     </div>
                     <div class="job-description">
                         <p>{{job.description}}</p>
+                    </div>
+                    <div class="apply-button">
+                        <div v-if="applied.includes(index +1)" @click="sendApplication(index)">
+                            <i class="fas fa-share-square">Applied</i>
+                        </div>
+                        <div v-else @click="sendApplication(index)">
+                            <i class="far fa-share-square">Apply</i>
+                        </div>
                     </div>
                 </div>
             </div>
