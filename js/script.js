@@ -7,9 +7,9 @@ new Vue(
             jobs: [
                 {
                     id: 1,
-                    company: 'Boolean',
+                    company: 'Boolean Careers',
                     position: 'Senior Full Stack Developer',
-                    description: "You will develop hard exercises for Boolean's classes",
+                    description: "You will develop hard exercises for Boolean's classes.",
                     created_at: '5/22/2021',
                     logo: 'https://www.boolean.careers/images/misc/logo-small.png',
                     city: 'Rome, Italy.',
@@ -19,7 +19,7 @@ new Vue(
                     id: 2,
                     company: 'SpaceX',
                     position: 'Astronaut',
-                    description: 'You will take care of wandering in space towards Mars with our Falcon',
+                    description: "You will take care of wandering in space towards Mars with Elon Musk's Falcon X.",
                     created_at: '7/12/2020',
                     logo: 'https://media-exp3.licdn.com/dms/image/C560BAQEbqLQ-JE0vdQ/company-logo_200_200/0/1546981484841?e=2159024400&v=beta&t=f60no4w5DV2toGVzTyGvPIpCk2LTWLwP9UQJIR2dpmI',
                     city: 'Austin, Texas.',
@@ -27,9 +27,9 @@ new Vue(
                 },
                 {
                     id: 3,
-                    company: 'Caltech',
+                    company: 'Caltech - California Institute of Technology',
                     position: 'Experimental Physicist',
-                    description: 'You will work alongside Dr.Sheldon Cooper on String Theory',
+                    description: "You will work alongside Dr.Sheldon Cooper's team on String Theory.",
                     created_at: '6/03/2021',
                     logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/TBBT_logo.svg/828px-TBBT_logo.svg.png',
                     city: 'Pasadena, California.',
@@ -37,7 +37,7 @@ new Vue(
                 },
                 {
                     id: 4,
-                    company: 'Apple',
+                    company: 'Apple Inc - California',
                     position: 'IT-Pro',
                     description: 'Increase your sales by creating complete solutions composed of both Apple products and services and complementary items.',
                     created_at: '6/03/2021',
@@ -59,7 +59,7 @@ new Vue(
                     id: 6,
                     company: 'NASA',
                     position: 'Data & AI',
-                    description: 'As a CTP you understand the client’s business requirements, technical requirements and/or competitive landscape. ',
+                    description: "As a National Aeronautics and Space Administration's CTP you understand the client’s business requirements, technical requirements and/or competitive landscape.",
                     created_at: '01/06/2021',
                     logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/NASA_logo.svg/2449px-NASA_logo.svg.png',
                     city: 'New York, New York.',
@@ -69,6 +69,7 @@ new Vue(
             starred: [1, 4, 5],
             applied: [2, 3],
             notification: 'off',
+            notificationError: 'off',
 
         },
 
@@ -122,7 +123,10 @@ new Vue(
 
 
                 } else { // se l'elemento è già incluso in "applied"
-                    alert('Application already sent'); // lo comunico via alert
+                    setTimeout(() => { this.notificationError = 'on'; }, 1000);
+                    setTimeout(() => { this.notificationError = 'off'; }, 2000);
+                    // alert('ERROR: APPLICATION ALREADY SENT'); 
+                    // lo comunico via alert
                 }
 
             }

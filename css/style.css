@@ -7,31 +7,33 @@
 body {
     font-family: 'Oxygen', sans-serif;
     background-color: #f2f2ef;
-    
 }
 
 header {
     background-color: #023047;
     color: white;
     border: 4px solid #f2f2ef;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
-header h1 {
+header h1, h2 {
     padding: 10px;
 }
+
 
 header i {
     font-size: 35px;
 }
 
-i {
-    cursor: pointer;
-}
-
 .container {
     margin: 0 auto;
-    display: flex;
+    display: flex
+}
 
+.container i {
+    cursor: pointer;
 }
 
 .all-jobs, .favorites, .applied {
@@ -45,6 +47,19 @@ i {
     color: white;
     background-color: #219ebc;
     border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+}
+
+.list-title h1 {
+    font-size: 25px;
+}
+
+.job-logo {
+    width: 20px;
+    height: 20px;
 }
 
 .job-row {
@@ -93,11 +108,48 @@ i {
     align-items: center;
     border-radius: 6px;
     padding: 10px;
-    background-color: #fb8500;
+    background-color: limegreen;
     color: white;
     padding: 2px 8px;
     font-size: 11px;
     text-align: center;
+}
+
+.application-notification-error {
+    position: fixed;
+    right: 50%;
+    top: 50%;
+    transform: translate(50%, -50%);
+    width: 400px;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 6px;
+    padding: 10px;
+    background-color: red;
+    color: white;
+    padding: 2px 8px;
+    font-size: 11px;
+    text-align: center;
+}
+
+footer {
+    background-color: black;
+    color: white;
+    height: 100px;
+    text-align: center;
+    padding: 10px;
+}
+
+footer p {
+    margin-top: 15px;
+    font-size: 12px;
+}
+
+footer h5 i {
+    color: red;
 }
 
 /* STARS -> FAVORITES  */
@@ -124,10 +176,4 @@ i {
     border-radius: 4px;
     padding: 10px;
     font-size: 12px;
-}
-
-/* JOB LOGO */
-.job-logo {
-    width: 20px;
-    height: 20px;
 }

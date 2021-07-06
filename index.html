@@ -20,6 +20,7 @@
 
         <header>
             <h1>Booled <i class="fab fa-linkedin"></i></h1>
+            <h2>The unconventional hiring platform</h2>
         </header>
 
         <div class="container">
@@ -60,6 +61,11 @@
                 <div class="application-notification" v-if="notification === 'on'">
                     <h1>Application successfully sent</h1>
                     <h2><i class="fas fa-thumbs-up"></i></h2>
+                </div>
+
+                <div class="application-notification-error" v-if="notificationError === 'on'">
+                    <h1><u>Application already sent</u></h1>
+                    <h2><i class="fas fa-exclamation-triangle"></i></h2>
                 </div>
             </div>
 
@@ -137,6 +143,11 @@
             
         </div>
 
+        <footer>
+            <h4>Booled<i class="fab fa-linkedin"></i></h4>
+            <h5>Made with <i class="fas fa-heart"></i> by Simone</h5>
+            <p>BooledIn is a registered trademark. Any reproduction is prohibited. If you find work through this platform you can thank its developer.</p>
+        </footer>
     </div>
     <script src="js/script.js"></script>
 </body>
