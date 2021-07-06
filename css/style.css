@@ -39,7 +39,9 @@ header i {
 .all-jobs, .favorites, .applied {
     width: calc(100% / 3);
     padding: 15px;
-    margin: 15px 0;
+    margin: 15px;
+    border-radius: 10px;
+    background-color: rgb(231, 229, 229);
 }
 
 .list-title {
@@ -171,7 +173,7 @@ footer h5 i {
 }
 
 .send {
-    background-color: #ffb703;
+    background-color: limegreen;
     color: white;
     border-radius: 4px;
     padding: 10px;
