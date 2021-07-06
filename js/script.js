@@ -64,12 +64,12 @@ new Vue(
                     logo: 'logo.jpg',
                     city: 'New York',
                     contract: 'Full Time'
-                }    
+                }
             ],
-            starred: [1,2,3],
-            applied: [4,5],
+            starred: [1, 2, 3],
+            applied: [4, 5],
             notification: 'off'
-            
+
         },
 
         methods: {
@@ -101,24 +101,27 @@ new Vue(
             */
 
             sendApplication: function (index) {
-    
-                this.applied.push(index + 1); //pusho nell'array "applied"
-                if (this.applied.includes(index + 1)) {
-                    this.starred.splice(index, 1); //elimino dall'array "starred"
+
+                if (!this.applied.includes(index + 1)) {// se non mi sono già candidato per questa posizione lavorativa
+                    this.applied.push(index + 1); // la pusho nell'array "applied"
+                    if (this.starred.includes(index + 1)) { // se è tra i preferiti
+                        this.starred.splice(index, 1); // la elimino di conseguenza dalla lista "starred"
+                    }
+                    // BONUS
+                    // Quando premiamo sul pulsante APPLY, 
+                    // dopo 1 secondo viene mostrata una modale con Feedback ‘Candidatura inviata’ 
+                    // che sparirà dopo un altro secondo
+                    setTimeout(() => { this.notification = 'on'; }, 1000);
+                    setTimeout(() => { this.notification = 'off'; }, 2000);
+
+
+                } else { // se l'elemento è già incluso in "applied"
+                    alert('Application already sent'); // lo comunico via alert
                 }
-                console.log('Application sended for Job n° ' + (index + 1));
-                console.log(this.starred);
-            
-                // BONUS
-                // Quando premiamo sul pulsante APPLY, 
-                // dopo 1 secondo viene mostrata una modale con Feedback ‘Candidatura inviata’ 
-                // che sparirà dopo un altro secondo
-                setTimeout(() => {this.notification = 'on';}, 1000);
-                setTimeout(() => {this.notification = 'off';}, 2000);
-            
-        },
+
+            }
+
+
         }
-
-
     }
 );
