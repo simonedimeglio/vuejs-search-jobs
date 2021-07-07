@@ -89,9 +89,7 @@ new Vue(
                 } else { // altrimenti
                     this.starred.push(index); // lo pusho nell'array
                 }
-                console.log(this.starred);
-
-
+                console.log(this.starred); // console.log per debug
             },
 
             /*
@@ -106,7 +104,7 @@ new Vue(
                 if (!this.applied.includes(index)) {// se non mi sono già candidato per questa posizione lavorativa
                     this.applied.push(index); // la pusho nell'array "applied"
 
-                    this.starred = this.starred.filter((e) => {
+                    this.starred = this.starred.filter((e) => { // filtro l'array starred
                         if (e === index) {
                             return false
                         } else {
@@ -121,17 +119,12 @@ new Vue(
                     setTimeout(() => { this.notification = 'on'; }, 1000);
                     setTimeout(() => { this.notification = 'off'; }, 2000);
 
-
                 } else { // se l'elemento è già incluso in "applied"
                     setTimeout(() => { this.notificationError = 'on'; }, 1000);
                     setTimeout(() => { this.notificationError = 'off'; }, 2000);
                     // alert('ERROR: APPLICATION ALREADY SENT'); 
-                    // lo comunico via alert
                 }
-
             }
-
-
         }
     }
 );
